@@ -3,16 +3,21 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(pacman -Q PACKAGENAME | awk '{print $2; exit}') # example command to get version of application here
-export ARCH VERSION
+export ARCH
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
-export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=PATH_OR_URL_TO_ICON
-export DESKTOP=PATH_OR_URL_TO_DESKTOP_ENTRY
+export ICON=/usr/share/icons/hicolor/512x512/apps/openscad.png
+export DESKTOP=/usr/share/applications/openscad.desktop
+export DEPLOY_OPENGL=1
+
+# On Arch Linux qt5-wayland also adds the server side plugins
+# remove them so that they do not get deployed
+rm -rf /usr/lib/qt/plugins/wayland-graphics-integration-server
 
 # Deploy dependencies
-quick-sharun /PATH/TO/BINARY_AND_LIBRARIES_HERE
+quick-sharun \
+	/usr/bin/openscad \
+	/usr/share/openscad
 
 # Additional changes can be done in between here
 

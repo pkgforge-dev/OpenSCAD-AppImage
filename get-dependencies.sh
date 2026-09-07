@@ -7,9 +7,9 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 if [ "${DEVEL_RELEASE-}" = 1 ]; then
-	pacman -Syu --noconfirm
+	pacman -Syu --noconfirm kvantum kvantum-qt5
 else
-	pacman -Syu --noconfirm openscad qt5-wayland
+	pacman -Syu --noconfirm kvantum kvantum-qt5 openscad qt5-wayland
 fi
 
 echo "Installing debloated packages..."

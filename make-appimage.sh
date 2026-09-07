@@ -17,6 +17,7 @@ rm -rf /usr/lib/qt/plugins/wayland-graphics-integration-server
 # Deploy dependencies
 quick-sharun \
 	/usr/bin/openscad \
+	/usr/share/Kvantum \
 	/usr/share/openscad
 
 # Additional changes can be done in between here

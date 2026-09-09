@@ -8,11 +8,7 @@ export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
 export ICON=/usr/share/icons/hicolor/512x512/apps/openscad.png
 export DESKTOP=/usr/share/applications/openscad.desktop
-export DEPLOY_OPENGL=1
-
-# On Arch Linux qt5-wayland also adds the server side plugins
-# remove them so that they do not get deployed
-rm -rf /usr/lib/qt/plugins/wayland-graphics-integration-server
+export USE_HOST_DRIVERS_EXPERIMENTAL=1
 
 # Deploy dependencies
 quick-sharun \
